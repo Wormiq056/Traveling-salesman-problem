@@ -37,7 +37,9 @@ class TabuSearch:
         """
         self.best_solution = neighbourhood.Neighbourhood(self._read_cities())
         self.tabu_list.insert_hood(self.best_solution)
-        print(self.best_solution.cost)
+        print("Initial city route: {}".format(self.best_solution.return_city_order()))
+        print("Initial route cost: {}".format(self.best_solution.cost))
+
         for _ in range(consts.TABU_ITERATIONS):
             self.tabu_list.reduce_limit()
             possible_candidates = []
@@ -50,5 +52,5 @@ class TabuSearch:
             self.best_solution = min(possible_candidates, key=attrgetter('cost'))
             self.tabu_list.insert_hood(self.best_solution)
 
-        print(self.best_solution.cost)
-        print(self.best_solution.return_city_order())
+        print("Result city route: {}".format(self.best_solution.return_city_order()))
+        print("Result route cost: {}".format(self.best_solution.cost))
