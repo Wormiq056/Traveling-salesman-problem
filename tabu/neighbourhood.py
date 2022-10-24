@@ -6,12 +6,14 @@ class Neighbourhood:
     """
     class that handles neighbourhood functionalities
     """
-    def __init__(self, list_of_cities, calc_cost=True):
+
+    def __init__(self, list_of_cities, calc_cost=True, last_neighbour=(0, 0)):
         self.hood = list_of_cities
         if calc_cost:
             self.cost = self._calculate_cost()
         else:
             self.cost = 0
+        self.last_neighbour = tuple(last_neighbour)
 
     def _calculate_cost(self) -> float:
         """
@@ -59,7 +61,7 @@ class Neighbourhood:
             order.append(hood[0])
         return order
 
-    def return_candidates(self) -> 'Neighbourhood':
+    def return_candidates(self):
         """
         method that yields possible candidates for given neighbourhood
         :return: possible next neighbourhood
@@ -69,5 +71,5 @@ class Neighbourhood:
                 if i == j:
                     continue
                 new_hood = self.hood.copy()
-                new_hood[i], new_hood[j] = new_hood[j], new_hood[i]
-                yield Neighbourhood(new_hood, calc_cost=False)
+                new_hood[i:j] = reversed(new_hood[i:j])
+                yield Neighbourhood(new_hood, calc_cost=False, last_neighbour=(i, j))

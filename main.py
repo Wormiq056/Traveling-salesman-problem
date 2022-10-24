@@ -23,7 +23,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.c is not None:
         if args.c.lower() == 'y':
-            generator.generate_cities()
+            generator.generate_test()
         else:
             if args.c.lower() not in ['y', 'n']:
                 print("Parameter -c must be either y or n")

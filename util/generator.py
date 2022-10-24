@@ -12,6 +12,18 @@ def generate_cities() -> None:
         x = random.randint(0, consts.MAP_X)
         y = random.randint(0, consts.MAP_Y)
         cities[str(i+1)] = [x, y]
+        print(str(x)+','+str(y))
     with open('./data/cities.json', 'w') as file:
         json.dump(cities, file)
+
+def generate_test() -> None:
+    dict = {}
+    with open('./data/test.txt', 'r') as file:
+        data = json.load(file)
+
+        for city in data.get("config"):
+            dict[city.get('Name')] = [city.get('X'),city.get('Y')]
+            print(str(city.get('X'))+",",str(city.get('Y')))
+    with open('./data/cities.json', 'w') as file:
+        json.dump(dict, file)
 

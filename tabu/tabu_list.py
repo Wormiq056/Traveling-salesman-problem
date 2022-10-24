@@ -19,9 +19,11 @@ class TabuList:
         city_order = hood.return_city_order()
         self.tabu_history.insert(0, city_order)
         self.tabu_history_dict[tuple(city_order)] = consts.TABU_LIMIT
+
         last_city = self.tabu_history[-1]
         if last_city is not None:
             del self.tabu_history_dict[tuple(last_city)]
+
         self.tabu_history.pop()
 
     def reduce_limit(self) -> None:
@@ -34,6 +36,7 @@ class TabuList:
                 if self.tabu_history_dict[tuple(hood)] == 0:
                     del self.tabu_history_dict[tuple(hood)]
                     self.tabu_history.remove(hood)
+
 
     def check_if_tabu(self, hood: neighbourhood.Neighbourhood) -> bool:
         """
