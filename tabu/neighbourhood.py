@@ -64,6 +64,7 @@ class Neighbourhood:
     def return_candidates(self):
         """
         method that yields possible candidates for given neighbourhood
+        candidate is created by swaping by rotating order between 2 edges
         :return: possible next neighbourhood
         """
         for i in range(len(self.hood)):

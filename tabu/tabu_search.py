@@ -5,7 +5,6 @@ from tabu import neighbourhood
 from operator import attrgetter
 from typing import List
 
-PATH_TO_CITIES = './data/cities.json'
 
 
 class TabuSearch:
@@ -22,7 +21,7 @@ class TabuSearch:
         method that read cities from a json file and sets it as the start solution
         """
         start_solution = []
-        with open(PATH_TO_CITIES, 'r') as file:
+        with open(consts.PATH_TO_CITIES, 'r') as file:
             data = json.load(file)
 
             for name, location in data.items():

@@ -37,7 +37,6 @@ class TabuList:
                     del self.tabu_history_dict[tuple(hood)]
                     self.tabu_history.remove(hood)
 
-
     def check_if_tabu(self, hood: neighbourhood.Neighbourhood) -> bool:
         """
         method that checks if given neighbourhood is currently in tabu history

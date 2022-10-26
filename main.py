@@ -1,7 +1,7 @@
 from tabu import tabu_search as tabu
 import argparse
 from util import generator
-
+from genetic import genetic_search as genetic
 
 def main() -> None:
     """
@@ -23,7 +23,7 @@ def main() -> None:
     args = parser.parse_args()
     if args.c is not None:
         if args.c.lower() == 'y':
-            generator.generate_test()
+            generator.generate_cities()
         else:
             if args.c.lower() not in ['y', 'n']:
                 print("Parameter -c must be either y or n")
@@ -33,12 +33,15 @@ def main() -> None:
         if args.s.lower() == 't':
             tabu.TabuSearch().search()
         elif args.s.lower() == 'g':
-            return
+            genetic.GeneticSearch()
         else:
             print("Incorrect -p argument. Set it to \'p\' or \'g\' ")
             return
     else:
-        tabu.TabuSearch().search()
+        genetic.GeneticSearch()
+        #tabu.TabuSearch().search()
+
+
 
 
 if __name__ == "__main__":
