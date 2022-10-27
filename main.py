@@ -2,6 +2,7 @@ from tabu import tabu_search as tabu
 import argparse
 from util import generator
 from genetic import genetic_search as genetic
+from util import consts
 
 def main() -> None:
     """
@@ -33,12 +34,12 @@ def main() -> None:
         if args.s.lower() == 't':
             tabu.TabuSearch().search()
         elif args.s.lower() == 'g':
-            genetic.GeneticSearch()
+            genetic.GeneticSearch(consts.TOURNAMENTS_SELECTION)
         else:
             print("Incorrect -p argument. Set it to \'p\' or \'g\' ")
             return
     else:
-        genetic.GeneticSearch()
+        genetic.GeneticSearch(consts.ROULETTE_SELECTION)
         #tabu.TabuSearch().search()
 
 

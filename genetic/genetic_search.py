@@ -13,11 +13,11 @@ class GeneticSearch:
     best_solution: chromosome.Chromosome
     in_order_solution: chromosome.Chromosome
 
-    def __init__(self):
+    def __init__(self, parent_selection):
         self.population = self._generate_population()
-        self.tournaments_winners = {}
+        self.parent_selection = parent_selection
+        self.selection_winners = {}
         self._run()
-        self.tournaments_winners = {}
         self.best_solution = self.population[0]
         print(self.best_solution.fitness)
 
@@ -46,13 +46,37 @@ class GeneticSearch:
 
         return population
 
+    def _roullete_selection(self):
+        worst_solution = max(self.population, key=attrgetter('fitness'))
+        selected_parents = []
+        sum_of_finesses = 0
+        for chromosome in self.population:
+            fitness_value = worst_solution.fitness - chromosome.fitness
+            sum_of_finesses += fitness_value
+
+        if sum_of_finesses == 0:
+            return selected_parents
+
+        for i in range(int(consts.INITIAL_POPULATION * (0.64))):
+            j = 0
+            random_stop_point = r.randint(0, int(sum_of_finesses))
+            while random_stop_point >= 0:
+                stop_minus = worst_solution.fitness - self.population[j].fitness
+                random_stop_point -= stop_minus
+                if random_stop_point > 0:
+                    j += 1
+
+            selected_parents.append(self.population[j])
+            self.selection_winners[tuple(self.population[j].return_city_order())] = True
+        return selected_parents
+
     def _tournament_selection(self):
         selected_parents = []
         while len(selected_parents) != int(consts.INITIAL_POPULATION * (0.64)):
             tournament = r.sample(self.population, int(consts.INITIAL_POPULATION * (0.1)))
             winner = min(tournament, key=attrgetter('fitness'))
 
-            self.tournaments_winners[tuple(winner.return_city_order())] = True
+            self.selection_winners[tuple(winner.return_city_order())] = True
             selected_parents.append(winner)
         return selected_parents
 
@@ -100,13 +124,21 @@ class GeneticSearch:
     def _run(self):
         for i in range(consts.GENETIC_ITERATIONS):
             finish_counter = 0
-            selected_parents = self._tournament_selection()
+            if self.parent_selection == consts.TOURNAMENTS_SELECTION:
+                selected_parents = self._tournament_selection()
+            elif self.parent_selection == consts.ROULETTE_SELECTION:
+                selected_parents = self._roullete_selection()
+                if not selected_parents:
+                    return True
+            else:
+                print("No valid parent selection method chosen (1 - tournaments selection, 2 - roulette selection")
+                return False
             mutating_chromosomes = []
             while len(mutating_chromosomes) != int(consts.INITIAL_POPULATION * (0.28)):
-                if finish_counter == 300:
-                    return
+                if finish_counter == consts.GENETIC_ITERATIONS + 100:
+                    return True
                 random_chromosome = r.choice(self.population)
-                if self.tournaments_winners.get(tuple(random_chromosome.return_city_order())):
+                if self.selection_winners.get(tuple(random_chromosome.return_city_order())):
                     finish_counter += 1
                     continue
                 finish_counter = 0
@@ -118,4 +150,4 @@ class GeneticSearch:
             self.population = self.population + new_chromosomes + mutated_chromosomes + offsprings
             self.population.sort(key=lambda x: x.fitness)
             self.population = self.population[:consts.INITIAL_POPULATION]
-            self.tournaments_winners.clear()
+            self.selection_winners.clear()
