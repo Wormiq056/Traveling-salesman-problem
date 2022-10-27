@@ -6,7 +6,6 @@ from operator import attrgetter
 from typing import List
 
 
-
 class TabuSearch:
     """
     class that runs tabu search algorithm
@@ -52,4 +51,3 @@ class TabuSearch:
 
         print("Result city route: {}".format(self.best_solution.return_city_order()))
         print("Result route cost: {}".format(self.best_solution.cost))
-

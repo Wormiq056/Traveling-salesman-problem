@@ -1,19 +1,24 @@
 import math
 import random as r
 from util import consts
+from typing import List
 
 r.seed(consts.SEED)
 
 
 class Chromosome:
-    def __init__(self, city_order):
+    """
+    class that stores genes(city order) and fitness (route cost) of genes
+    """
+
+    def __init__(self, city_order) -> None:
         self.genes = city_order
         self.fitness = self._calculate_cost()
 
     def _calculate_cost(self) -> float:
         """
-        mathod that is called when class object is created and you wanto to calculate its path cost
-        :return: distance of city order path
+        method that is called when class object is created
+        :return: distance of city order in genes
         """
         distance = 0.0
         for i in range(len(self.genes)):
@@ -34,7 +39,11 @@ class Chromosome:
         b = abs(city_a[2] - city_b[2])
         return math.sqrt(a ** 2 + b ** 2)
 
-    def return_city_order(self):
+    def return_city_order(self) -> List[str]:
+        """
+        method that returns city order from genes
+        :return: city order in a list of strings
+        """
         order = []
         for city in self.genes:
             order.append(city[0])
