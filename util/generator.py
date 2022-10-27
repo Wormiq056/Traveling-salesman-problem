@@ -18,6 +18,9 @@ def generate_cities() -> None:
 
 
 def generate_test() -> None:
+    """
+    method that loads test rout from data/test.txt
+    """
     dict = {}
     with open('./data/test.txt', 'r') as file:
         data = json.load(file)

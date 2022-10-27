@@ -1,7 +1,7 @@
 from util import consts
 import json
-from tabu import tabu_list
-from tabu import neighbourhood
+from tabu.tabu_list import TabuList
+from tabu.neighbourhood import Neighbourhood
 from operator import attrgetter
 from typing import List
 
@@ -13,7 +13,7 @@ class TabuSearch:
 
     def __init__(self) -> None:
         self.num_of_iterations = consts.TABU_ITERATIONS
-        self.tabu_list = tabu_list.TabuList()
+        self.tabu_list = TabuList()
 
     def _read_cities(self) -> List[list]:
         """
@@ -33,10 +33,9 @@ class TabuSearch:
         method that searches for optimal solution
         it follows the tabu search algorithm
         """
-        self.best_solution = neighbourhood.Neighbourhood(self._read_cities())
+        self.best_solution = Neighbourhood(self._read_cities())
         self.tabu_list.insert_hood(self.best_solution)
-        # print("Initial city route: {}".format(self.best_solution.return_city_order()))
-        # print("Initial route cost: {}".format(self.best_solution.cost))
+
         for _ in range(consts.TABU_ITERATIONS):
             self.tabu_list.reduce_limit()
             possible_candidates = []

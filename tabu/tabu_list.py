@@ -1,5 +1,5 @@
 from util import consts
-from tabu import neighbourhood
+from tabu.neighbourhood import Neighbourhood
 
 
 class TabuList:
@@ -11,7 +11,7 @@ class TabuList:
         self.tabu_history = [None for _ in range(consts.TABU_SIZE)]
         self.tabu_history_dict = {}
 
-    def insert_hood(self, hood: neighbourhood) -> None:
+    def insert_hood(self, hood: Neighbourhood) -> None:
         """
         method that inserts neighbourhood into tabu history
         :param hood: hood you want to insert
@@ -37,7 +37,7 @@ class TabuList:
                     del self.tabu_history_dict[tuple(hood)]
                     self.tabu_history.remove(hood)
 
-    def check_if_tabu(self, hood: neighbourhood.Neighbourhood) -> bool:
+    def check_if_tabu(self, hood: Neighbourhood) -> bool:
         """
         method that checks if given neighbourhood is currently in tabu history
         :param hood: neighbourhood you want to check
