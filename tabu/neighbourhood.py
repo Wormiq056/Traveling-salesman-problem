@@ -7,17 +7,17 @@ class Neighbourhood:
     class that handles neighbourhood functionalities
     """
 
-    def __init__(self, list_of_cities, calc_cost=True, last_neighbour=(0, 0)):
+    def __init__(self, list_of_cities, calc_cost=True):
         self.hood = list_of_cities
         if calc_cost:
             self.cost = self._calculate_cost()
         else:
             self.cost = 0
-        self.last_neighbour = tuple(last_neighbour)
+
 
     def _calculate_cost(self) -> float:
         """
-        mathod that is called when class object is created and you wanto to calculate its path cost
+        method that is called when class object is created and you wanto to calculate its path cost
         :return: distance of city order path
         """
         distance = 0.0
@@ -64,7 +64,7 @@ class Neighbourhood:
     def return_candidates(self):
         """
         method that yields possible candidates for given neighbourhood
-        candidate is created by swaping by rotating order between 2 edges
+        candidate is created by swapping by rotating order between 2 edges
         :return: possible next neighbourhood
         """
         for i in range(len(self.hood)):
@@ -73,4 +73,4 @@ class Neighbourhood:
                     continue
                 new_hood = self.hood.copy()
                 new_hood[i:j] = reversed(new_hood[i:j])
-                yield Neighbourhood(new_hood, calc_cost=False, last_neighbour=(i, j))
+                yield Neighbourhood(new_hood, calc_cost=False)

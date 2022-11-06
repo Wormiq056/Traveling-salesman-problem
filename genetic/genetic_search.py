@@ -23,7 +23,9 @@ class GeneticSearch:
         self.selection_winners = {}
         self._run()
         self.best_solution = self.population[0]
-        print(self.best_solution.fitness)
+        print("In order path cost: "+str(self.in_order_solution.fitness))
+        print("Best found cost: "+str(self.best_solution.fitness))
+        print("Result city route: {}".format(self.best_solution.return_city_order()))
 
     def _read_cities(self) -> List[list]:
         """

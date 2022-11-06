@@ -35,6 +35,7 @@ class TabuSearch:
         """
         self.best_solution = Neighbourhood(self._read_cities())
         self.tabu_list.insert_hood(self.best_solution)
+        print("In order route cost: {}".format(self.best_solution.cost))
 
         for _ in range(consts.TABU_ITERATIONS):
             self.tabu_list.reduce_limit()

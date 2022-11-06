@@ -1,0 +1,143 @@
+******Test - genetic algorithm 20 cities********
+
+TESTING FOR 50 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 759.9927839555957
+Time to execute algorithm: 0.058212995529174805 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 884.7800203962058
+Time to execute algorithm: 0.05661368370056152 seconds
+
+TESTING FOR 100 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 739.3433865401167
+Time to execute algorithm: 0.11426854133605957 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 750.0369318344536
+Time to execute algorithm: 0.0900263786315918 seconds
+
+TESTING FOR 200 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 737.974941916189
+Time to execute algorithm: 0.105255126953125 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2248.5739443181483
+Best found cost: 743.434473623109
+Time to execute algorithm: 0.11660361289978027 seconds
+
+******Test - genetic algorithm 30 cities********
+
+TESTING FOR 50 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 1204.2969640950923
+Time to execute algorithm: 0.10616326332092285 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 1305.9451713229769
+Time to execute algorithm: 0.0834200382232666 seconds
+
+TESTING FOR 100 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 972.8330703453984
+Time to execute algorithm: 0.1910722255706787 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 1067.3616375816196
+Time to execute algorithm: 0.1701364517211914 seconds
+
+TESTING FOR 200 GENETIC ITERATIONS
+
+---TOURNAMENT SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 995.359130766039
+Time to execute algorithm: 0.2439134120941162 seconds
+---ROULETTTE SELECTION---
+In order path cost: 2893.846022094149
+Best found cost: 938.696886344881
+Time to execute algorithm: 0.33724284172058105 seconds
+
+
+
+
+******Test - tabu search 20 cities********
+
+
+TESTING TABU SEARCH WITH 50 ITERATIONS
+
+---TABU LIST SIZE 10---
+In order route cost: 2264.1620412714683
+Result route cost: 706.7707617852859
+Time to execute algorithm: 0.1749739646911621 seconds
+---TABU LIST SIZE 20---
+In order route cost: 2264.1620412714683
+Result route cost: 720.3594845323618
+Time to execute algorithm: 0.1886143684387207 seconds
+
+TESTING TABU SEARCH WITH 100 ITERATIONS
+
+---TABU LIST SIZE 10---
+In order route cost: 2264.1620412714683
+Result route cost: 694.2788718127296
+Time to execute algorithm: 0.35341358184814453 seconds
+---TABU LIST SIZE 20---
+In order route cost: 2264.1620412714683
+Result route cost: 727.2638201140652
+Time to execute algorithm: 0.3489112854003906 seconds
+
+TESTING TABU SEARCH WITH 200 ITERATIONS
+
+---TABU LIST SIZE 10---
+In order route cost: 2264.1620412714683
+Result route cost: 706.0009112798087
+Time to execute algorithm: 0.7178504467010498 seconds
+---TABU LIST SIZE 20---
+In order route cost: 2264.1620412714683
+Result route cost: 706.0009112798087
+Time to execute algorithm: 0.7339987754821777 seconds
+******Test - tabu search 30 cities********
+
+
+TESTING TABU SEARCH WITH 50 ITERATIONS
+
+---TABU LIST SIZE 15--
+In order route cost: 2938.370606878763
+Result route cost: 962.3313974903513
+Time to execute algorithm: 0.6159384250640869 seconds
+---TABU LIST SIZE 30---
+In order route cost: 2938.370606878763
+Result route cost: 970.1035684919709
+Time to execute algorithm: 0.6149075031280518 seconds
+
+TESTING TABU SEARCH WITH 100 ITERATIONS
+
+---TABU LIST SIZE 15---
+In order route cost: 2938.370606878763
+Result route cost: 906.7024219269554
+Time to execute algorithm: 1.2714824676513672 seconds
+---TABU LIST SIZE 30---
+In order route cost: 2938.370606878763
+Result route cost: 929.9411164310733
+Time to execute algorithm: 1.2848410606384277 seconds
+
+TESTING TABU SEARCH WITH 200 ITERATIONS
+
+---TABU LIST SIZE 15---
+In order route cost: 2938.370606878763
+Result route cost: 917.5425593099592
+Time to execute algorithm: 2.579690933227539 seconds
+---TABU LIST SIZE 30---
+In order route cost: 2938.370606878763
+Result route cost: 915.6792921127178
+Time to execute algorithm: 2.5673532485961914 seconds

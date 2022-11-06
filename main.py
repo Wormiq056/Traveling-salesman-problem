@@ -3,7 +3,7 @@ import argparse
 from util import generator
 from genetic import genetic_search as genetic
 from util import consts
-
+from tests import run_test
 
 def main() -> None:
     """
@@ -26,7 +26,11 @@ def main() -> None:
     )
 
     args = parser.parse_args()
-    
+
+    if args.s is None and args.c is None:
+        run_test.start_testing()
+        return
+
     if args.c is not None:
         if args.c.lower() == 'y':
             generator.generate_cities()
@@ -47,8 +51,9 @@ def main() -> None:
         else:
             print("Incorrect -p argument. Set it to \'p\' or \'g1\' or \'g2\'")
             return
-    else:
-        tabu.TabuSearch().search()
+
+    if args.s is None and args.c is None:
+        run_test.start_testing()
 
 
 if __name__ == "__main__":
